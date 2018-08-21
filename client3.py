@@ -1,6 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python27
 import http.client
 #Level 1
+print("running...")
 conn1 = http.client.HTTPConnection("172.31.38.164")
 conn1.request("GET", "/")
 r1 = conn1.getresponse()
@@ -25,14 +26,15 @@ import hashlib
 from random import randint
 conn3 = http.client.HTTPConnection("172.31.38.164:21337")
 for x in range (100,199):
-  dk = hashlib.pbkdf2_hmac('sha256', bytes(os.environ.get('level_2_secret_token'),'utf-8', 12345, x)
-  code = dk.hex()
-  conn3.request("GET", "/"+code)
-print("Trying " + str(dk.hex())
-r3 = conn3.getresponse()
-print(r3.status, r3.reason)
-data3 = r3.read()
-print(data3)
+	dk = hashlib.pbkdf2_hmac('sha256', b'bsadg2342bfeds235sge2', b'12345', 100)
+	seccode = dk.hex()
+	print(seccode)
+	conn3.request("GET", "/"+seccode)
+	print("Trying " + seccode)
+	r3 = conn3.getresponse()
+	print(r3.status, r3.reason)
+	data3 = r3.read()
+	#print(data3)
 conn3.close()
 
 
