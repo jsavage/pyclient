@@ -26,7 +26,7 @@ import hashlib
 from random import randint
 conn3 = http.client.HTTPConnection("172.31.38.164:21337")
 for x in range (100,199):
-	dk = hashlib.pbkdf2_hmac('sha256', b'bsadg2342bfeds235sge2', b'12345', 100)
+	dk = hashlib.pbkdf2_hmac('sha256', b'bsadg2342bfeds235sge2', b'12345', x)
 	seccode = dk.hex()
 	print(seccode)
 	conn3.request("GET", "/"+seccode)
@@ -36,6 +36,7 @@ for x in range (100,199):
 	data3 = r3.read()
 	#print(data3)
 conn3.close()
+
 
 
 
